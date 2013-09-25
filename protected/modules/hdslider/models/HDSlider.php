@@ -30,7 +30,8 @@ class HDSlider extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, params, status', 'required'),
+			array('name', 'required'),
+            array('name','unique'),
 			array('status', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>50),
 			// The following rule is used by search().

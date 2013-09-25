@@ -4,12 +4,23 @@ class DefaultController extends Controller
 {
 	public function actionIndex()
 	{
-		$this->render('index');
+        $model = new HDSlider;
+
+		$this->render('index',array('model' => $model));
 	}
 
-    public function actionUpload()
+    public function actionCreate()
     {
-        $uploadPath = Yii::getPathOfAlias('webroot').'/uploads/hdslider';
-        echo $uploadPath;
+        $model = new HDSlider;
+        if(isset($_POST['HDSlider']))
+        {
+            $model->attributes = $_POST['HDSlider'];
+            $model->save();
+        }
+        $this->render('create', array('model' => $model));
     }
-}
+
+    public function actionUpdate($id)
+    {
+
+    }}
