@@ -1,16 +1,13 @@
 <?php
 
 /**
- * This is the model class for table "yupe_hdslider_slider".
  *
- * The followings are the available columns in table 'yupe_hdslider_slider':
+ * The followings are the available columns in table 'hdslider_slider':
  * @property integer $id
  * @property string $name
  * @property string $params
  * @property integer $status
- *
- * The followings are the available model relations:
- * @property YupeHdsliderImages[] $yupeHdsliderImages
+
  */
 class HDSlider extends CActiveRecord
 {
@@ -19,7 +16,7 @@ class HDSlider extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'yupe_hdslider_slider';
+		return 'hdslider_slider';
 	}
 
 	/**

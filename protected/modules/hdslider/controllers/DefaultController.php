@@ -23,4 +23,11 @@ class DefaultController extends Controller
     public function actionUpdate($id)
     {
 
-    }}
+    }
+
+    public function actionDelete($id)
+    {
+
+    }
+
+}

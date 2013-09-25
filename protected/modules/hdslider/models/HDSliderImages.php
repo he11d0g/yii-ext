@@ -1,9 +1,8 @@
 <?php
 
 /**
- * This is the model class for table "yupe_hdslider_images".
  *
- * The followings are the available columns in table 'yupe_hdslider_images':
+ * The followings are the available columns in table 'hdslider_images':
  * @property integer $id
  * @property integer $slider_id
  * @property string $name
@@ -11,9 +10,6 @@
  * @property string $link
  * @property string $description
  * @property integer $sort
- *
- * The followings are the available model relations:
- * @property YupeHdsliderSlider $slider
  */
 class HDSliderImages extends CActiveRecord
 {
@@ -22,7 +18,7 @@ class HDSliderImages extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'yupe_hdslider_images';
+		return 'hdslider_images';
 	}
 
 	/**
