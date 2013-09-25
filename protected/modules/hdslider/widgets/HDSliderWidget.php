@@ -22,7 +22,7 @@ class HDSliderWidget extends CWidget
             throw new Exception('Укажите название слайдера!');
         $slider = HDSlider::model()->with('images')->find('t.name = :name',array(':name' => $this->name));
         $params = $slider->getConfig();
-
+         /*test*/
         $this->render('slider',array('slider'=>$slider,'params' =>$params));
     }
 
