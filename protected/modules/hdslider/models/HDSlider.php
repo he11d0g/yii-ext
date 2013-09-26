@@ -109,4 +109,12 @@ class HDSlider extends CActiveRecord
         $params = CJSON::decode($this->params);
         return $params;
     }
+
+    public function setParams($params)
+    {
+        $params['autoload'] = $params['autoload']?: true ;
+        $params['bgincrement'] = $params['bgincrement']?: 450 ;
+
+        return CJSON::encode($params);
+    }
 }
