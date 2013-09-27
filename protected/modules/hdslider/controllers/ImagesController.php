@@ -9,7 +9,7 @@ class ImagesController extends CController
 {
     public function actionIndex()
     {
-        $model = new HDSliderImages();
+        $model = new HDSliderImages;
 
         $this->render('index',array('model' => $model));
     }
@@ -20,8 +20,39 @@ class ImagesController extends CController
         if(isset($_POST['HDSliderImages']))
         {
             $model->attributes = $_POST['HDSliderImages'];
-            $model->save();
+            if($model->save()) {
+                Yii::app()->user->setFlash('info','Слайдер Добавлен!');
+            } else {
+                Yii::app()->user->setFlash('info','Ошибка!');
+            }
+            $this->redirect(array('create'));
         }
         $this->render('create', array('model' => $model));
     }
+
+    public function actionUpdate($id)
+    {
+        $model = HDSliderImages::model()->with('images')->findByPk($id);
+        if(isset($_POST['HDSliderImages']))
+        {
+            $model->attributes = $_POST['HDSliderImages'];
+            if($model->save()) {
+                Yii::app()->user->setFlash('info','Слайдер обновлен!');
+            } else {
+                Yii::app()->user->setFlash('info','Ошибка!');
+            }
+        }
+        $this->render('update', array('model' => $model));
+    }
+
+    public function actionDelete($id)
+    {
+        if (Yii::app()->request->isPostRequest)
+        {
+            HDSliderImages::model()->findByPk($id)->delete();
+            if (!isset($_GET['ajax']))
+                $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
+        }
+    }
+
 }

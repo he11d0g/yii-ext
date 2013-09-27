@@ -5,6 +5,9 @@
  * @link    http://helldog.net
  */
 ?>
+<?php if(Yii::app()->user->hasFlash('info')):
+    echo Yii::app()->user->getFlash('info');
+endif; ?>
 <div class="form">
     <?php $form=$this->beginWidget('CActiveForm', array(
         'id'=>'sliderimages-form',
@@ -45,7 +48,10 @@
         <?php echo $form->error($model,'sort'); ?>
     </div>
     <div class="row">
-        <?php echo CHtml::submitButton('Добавить') ?>
+        <?php if($model->isNewRecord){
+            echo CHtml::submitButton('Добавить');
+        } else
+            echo CHtml::submitButton('Обновить') ?>
     </div>
     <?php $this->endWidget() ?>
 </div>

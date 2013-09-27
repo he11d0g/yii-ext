@@ -117,4 +117,14 @@ class HDSlider extends CActiveRecord
 
         return CJSON::encode($params);
     }
+
+    public function beforeDelete()
+    {
+        $model = HDSliderImages::model()->findAll('slider_id = :id',array(':id' => $this->id));
+        foreach($model as $image)
+        {
+            $image->delete();
+        }
+        return parent::beforeDelete();
+    }
 }
