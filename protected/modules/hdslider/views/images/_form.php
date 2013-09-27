@@ -11,11 +11,11 @@ endif; ?>
 <div class="form">
     <?php $form=$this->beginWidget('CActiveForm', array(
         'id'=>'sliderimages-form',
-        'enableClientValidation'=>true,
+        'enableClientValidation'=>false,
         'clientOptions'=>array(
-            'validateOnSubmit'=>true,
-            'enctype'=>'multipart/form-data',
+            'validateOnSubmit'=>false,
         ),
+       'htmlOptions' => array('enctype' => 'multipart/form-data', 'title' => 'form title'),
 
     )); ?>
 
