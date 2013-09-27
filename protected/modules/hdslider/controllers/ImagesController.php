@@ -25,7 +25,7 @@ class ImagesController extends CController
             $model->attributes = $_POST['HDSliderImages'];
             $model->image= CUploadedFile::getInstance($model,'image');
             if($model->save()) {
-                $model->image->saveAs(Yii::getpathOfAlias('webroot.uploads.hdslider').'/myimg.jpg');
+                $model->image->saveAs(Yii::getpathOfAlias('webroot.uploads.hdslider').'/'.$model->image);
                 Yii::app()->user->setFlash('info','Слайдер Добавлен!');
             } else {
                 Yii::app()->user->setFlash('info','Ошибка!');
@@ -35,6 +35,10 @@ class ImagesController extends CController
         $this->render('create', array('model' => $model));
     }
 
+
+    /**
+     * @TODO не корректно загружяется файл с кириллицей в имени файла
+     */
     public function actionUpdate($id)
     {
         $model = HDSliderImages::model()->with('slider')->findByPk($id);
