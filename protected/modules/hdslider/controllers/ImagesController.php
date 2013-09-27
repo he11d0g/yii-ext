@@ -15,7 +15,7 @@ class ImagesController extends CController
     }
 
     /**
-     * @TODO не корректно загружяется файл с кириллицей в названии
+     * @TODO не корректно загружяется файл с кириллицей в имени файла
      */
     public function actionCreate()
     {
