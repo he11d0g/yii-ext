@@ -2,7 +2,7 @@
 
 class DefaultController extends Controller
 {
-	public function actionIndex()
+    public function actionIndex()
 	{
         $model = new HDSlider;
 

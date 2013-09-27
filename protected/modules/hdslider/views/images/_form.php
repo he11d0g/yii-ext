@@ -14,7 +14,9 @@ endif; ?>
         'enableClientValidation'=>true,
         'clientOptions'=>array(
             'validateOnSubmit'=>true,
+            'enctype'=>'multipart/form-data',
         ),
+
     )); ?>
 
     <div class="row">
@@ -29,6 +31,9 @@ endif; ?>
     </div>
     <div class="row">
         <?php echo $form->labelEx($model,'path'); ?>
+        <?php echo $form->FileField($model,'image'); ?>
+
+
         <?php echo $form->textField($model,'path'); ?>
         <?php echo $form->error($model,'path'); ?>
     </div>

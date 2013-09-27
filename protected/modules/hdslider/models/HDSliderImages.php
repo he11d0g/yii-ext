@@ -13,6 +13,7 @@
  */
 class HDSliderImages extends CActiveRecord
 {
+    public $image;
 	/**
 	 * @return string the associated database table name
 	 */
@@ -29,9 +30,10 @@ class HDSliderImages extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+            array('image', 'file', 'types'=>'jpg, gif, png'),
 			array('slider_id, name, path, link, description, sort', 'required'),
 			array('slider_id, sort', 'numerical', 'integerOnly'=>true),
-			array('name, path, link', 'length', 'max'=>150),
+			array('name, link', 'length', 'max'=>150),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, slider_id, name, path, link, description, sort', 'safe', 'on'=>'search'),
