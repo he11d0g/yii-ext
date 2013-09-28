@@ -30,8 +30,9 @@ class HDSliderImages extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-            array('image', 'file', 'types'=>'jpg, gif, png'),
-			array('slider_id, name, path, link, description, sort', 'required'),
+            array('path','unique'),
+           // array('image', 'file', 'types'=>'jpg, gif, png'),
+			array('slider_id, name, description', 'required'),
 			array('slider_id, sort', 'numerical', 'integerOnly'=>true),
 			array('name, link', 'length', 'max'=>150),
 			// The following rule is used by search().
@@ -109,4 +110,20 @@ class HDSliderImages extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+    public function beforeSave()
+    {
+        $this->image = CUploadedFile::getInstance($this,'image');
+        if($this->image)
+        {
+            if(is_file(Yii::getpathOfAlias('webroot.uploads.hdslider').'/'.$this->path)) {
+                unlink(Yii::getpathOfAlias('webroot.uploads.hdslider').'/'.$this->path);
+
+            }
+            $this->image->saveAs(Yii::getpathOfAlias('webroot.uploads.hdslider').'/'.$this->image->name);
+            $this->path = $this->image->name;
+        }
+
+        return parent::beforeSave();
+    }
 }

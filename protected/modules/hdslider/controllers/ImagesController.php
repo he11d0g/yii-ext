@@ -23,9 +23,7 @@ class ImagesController extends CController
         if(isset($_POST['HDSliderImages']))
         {
             $model->attributes = $_POST['HDSliderImages'];
-            $model->image= CUploadedFile::getInstance($model,'image');
             if($model->save()) {
-                $model->image->saveAs(Yii::getpathOfAlias('webroot.uploads.hdslider').'/'.$model->image);
                 Yii::app()->user->setFlash('info','Слайдер Добавлен!');
             } else {
                 Yii::app()->user->setFlash('info','Ошибка!');
@@ -45,9 +43,7 @@ class ImagesController extends CController
         if(isset($_POST['HDSliderImages']))
         {
             $model->attributes = $_POST['HDSliderImages'];
-            $model->image = CUploadedFile::getInstance($model,'image');
             if($model->save()) {
-                $model->image->saveAs(Yii::getpathOfAlias('webroot.uploads.hdslider').'/'.$model->image);
                 Yii::app()->user->setFlash('info','Слайдер обновлен!');
             } else {
                 Yii::app()->user->setFlash('info','Ошибка!');

@@ -11,9 +11,9 @@ endif; ?>
 <div class="form">
     <?php $form=$this->beginWidget('CActiveForm', array(
         'id'=>'sliderimages-form',
-        'enableClientValidation'=>false,
+        'enableClientValidation'=>true,
         'clientOptions'=>array(
-            'validateOnSubmit'=>false,
+            'validateOnSubmit'=>true,
         ),
        'htmlOptions' => array('enctype' => 'multipart/form-data', 'title' => 'form title'),
 
@@ -31,10 +31,12 @@ endif; ?>
     </div>
     <div class="row">
         <?php echo $form->labelEx($model,'path'); ?>
+        <?php if($model->path)
+        {
+            echo CHtml::image(Yii::app()->baseUrl.'uploads/hdslider/'.$model->path,'image', array('width' => 300));
+        }
+        ?>
         <?php echo $form->FileField($model,'image'); ?>
-
-
-        <?php echo $form->textField($model,'path'); ?>
         <?php echo $form->error($model,'path'); ?>
     </div>
     <div class="row">
