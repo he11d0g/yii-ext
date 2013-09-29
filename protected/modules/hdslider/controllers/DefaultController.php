@@ -31,6 +31,7 @@ class DefaultController extends Controller
         if(isset($_POST['HDSlider']))
         {
             $model->attributes = $_POST['HDSlider'];
+            $model->params = $model->setConfig($model->params);
             if($model->save()) {
                 Yii::app()->user->setFlash('info','Слайдер обновлен!');
             } else {

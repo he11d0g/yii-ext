@@ -15,4 +15,4 @@ $this->widget('zii.widgets.grid.CGridView',array(
     ),
 ))
 ?>
-<?php //$this->widget('application.modules.hdslider.widgets.HDSliderWidget',array('name' => 'Test')); ?>
+<?php $this->widget('application.modules.hdslider.widgets.HDSliderWidget',array('name' => 'Test')); ?>

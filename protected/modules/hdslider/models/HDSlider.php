@@ -29,6 +29,7 @@ class HDSlider extends CActiveRecord
 		return array(
 			array('name', 'required'),
             array('name','unique'),
+            array('params','safe'),
 			array('status', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>50),
 			// The following rule is used by search().
@@ -110,12 +111,12 @@ class HDSlider extends CActiveRecord
         return $params;
     }
 
-    public function setParams($params)
+    public function setConfig($params)
     {
-        $params['autoload'] = $params['autoload']?: true ;
-        $params['bgincrement'] = $params['bgincrement']?: 450 ;
-
-        return CJSON::encode($params);
+        $config = $this->getConfig($params);
+        $config['autoplay'] = isset($config['autoplay']) ? $config['autoplay']: "true" ;
+        $config['bgincrement'] = isset($config['bgincrement']) ? $config['bgincrement'] : 450 ;
+        return CJSON::encode($config);
     }
 
     public function beforeDelete()

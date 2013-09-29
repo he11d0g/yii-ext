@@ -118,12 +118,10 @@ class HDSliderImages extends CActiveRecord
         {
             if(is_file(Yii::getpathOfAlias('webroot.uploads.hdslider').'/'.$this->path)) {
                 unlink(Yii::getpathOfAlias('webroot.uploads.hdslider').'/'.$this->path);
-
             }
             $this->image->saveAs(Yii::getpathOfAlias('webroot.uploads.hdslider').'/'.$this->image->name);
             $this->path = $this->image->name;
         }
-
         return parent::beforeSave();
     }
 }
