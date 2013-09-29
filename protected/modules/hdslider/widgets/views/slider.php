@@ -27,7 +27,7 @@ Yii::app()->clientScript->registerScriptFile($assetPath.'/js/jquery.cslider.js')
             <?php if($image->link) { ?>
                 <a href="#" class="da-link"></a>
             <?php } ?>
-            <div class="da-img"><img src="<?php //echo Yii::app()->request->baseUrl.'/'.$image->path?>" alt="image01" /></div>
+            <div class="da-img"><img src="<?php echo Yii::app()->request->baseUrl.'/uploads/hdslider/'.$image->path ?>" alt="image01" /></div>
         </div>
         <?php } ?>
         <nav class="da-arrows">

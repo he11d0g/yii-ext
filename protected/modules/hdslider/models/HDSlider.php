@@ -107,23 +107,35 @@ class HDSlider extends CActiveRecord
      */
     public function getConfig()
     {
-        $params = CJSON::decode($this->params);
-        return $params;
+       return CJSON::decode($this->params);
     }
 
-    public function setConfig($params)
+
+    /**
+     * Установка дефолтных параметров слайдера перед сейвом
+     * @return mixed
+     */
+    public function beforeSave()
     {
-        $config = $this->getConfig($params);
+        $config = $this->getConfig();
         $config['autoplay'] = isset($config['autoplay']) ? $config['autoplay']: "true" ;
         $config['bgincrement'] = isset($config['bgincrement']) ? $config['bgincrement'] : 450 ;
-        return CJSON::encode($config);
+
+        $this->params = CJSON::encode($config);
+
+        return parent::beforeSave();
     }
 
+    /**
+     * Вместе со слайдером удаляем все изображения
+     * @return mixed
+     */
     public function beforeDelete()
     {
         $model = HDSliderImages::model()->findAll('slider_id = :id',array(':id' => $this->id));
         foreach($model as $image)
         {
+            $image->deleteImg();
             $image->delete();
         }
         return parent::beforeDelete();

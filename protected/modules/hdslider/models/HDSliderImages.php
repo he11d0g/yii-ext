@@ -32,7 +32,8 @@ class HDSliderImages extends CActiveRecord
 		return array(
             array('path','unique'),
            // array('image', 'file', 'types'=>'jpg, gif, png'),
-			array('slider_id, name, description', 'required'),
+            array('description', 'safe'),
+			array('slider_id, name', 'required'),
 			array('slider_id, sort', 'numerical', 'integerOnly'=>true),
 			array('name, link', 'length', 'max'=>150),
 			// The following rule is used by search().
@@ -124,4 +125,23 @@ class HDSliderImages extends CActiveRecord
         }
         return parent::beforeSave();
     }
+
+    /**
+     * Удаление изображения
+     */
+    public function deleteImg()
+    {
+        $path = Yii::getpathOfAlias('webroot.uploads.hdslider').'/'.$this->path;
+        if(is_file($path))
+            unlink($path);
+
+    }
+
+    public function afterDelete()
+    {
+        $this->deleteImg();
+        return parent::afterDelete();
+    }
+
+
 }

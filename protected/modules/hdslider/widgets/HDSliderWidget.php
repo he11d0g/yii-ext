@@ -20,6 +20,7 @@ class HDSliderWidget extends CWidget
     {
         if(!$this->name)
             throw new Exception('Укажите название слайдера!');
+        Yii::import('application.modules.hdslider.models.*');
         $slider = HDSlider::model()->with('images')->find('t.name = :name',array(':name' => $this->name));
         $params = $slider->getConfig();
 
