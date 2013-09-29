@@ -25,6 +25,7 @@ endif; ?>
     <div class="row">
         <?php echo $form->labelEx($model,'params'); ?>
         <?php echo $form->textField($model,'params'); ?>
+        <?php echo 'Оставьте поле пустым для автогенерации' ?>
         <?php echo $form->error($model,'params'); ?>
     </div>
     <div class="row">
