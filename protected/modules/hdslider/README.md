@@ -28,3 +28,6 @@ HDSlider v. 0.4
  ```
 
 Где `name` - уникальное имя слайдера
+
+
+Исходники слайдера взяты с <http://tympanus.net/codrops/2012/03/15/parallax-content-slider-with-css3-and-jquery/>
