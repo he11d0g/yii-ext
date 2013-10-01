@@ -120,6 +120,7 @@ class HDSlider extends CActiveRecord
         $config = $this->getConfig();
         $config['autoplay'] = isset($config['autoplay']) ? $config['autoplay']: "true" ;
         $config['bgincrement'] = isset($config['bgincrement']) ? $config['bgincrement'] : 450 ;
+        $config['interval'] = isset($config['interval']) ? $config['interval'] : 4000 ;
 
         $this->params = CJSON::encode($config);
 

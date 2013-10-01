@@ -42,6 +42,7 @@ Yii::app()->clientScript->registerScript('slider',
         $("#da-slider").cslider({
             autoplay	: '.$params['autoplay'].',
             bgincrement	: '.$params['bgincrement'].'
+            interval    : '.$params['interval'].',
         });
        });'
 
