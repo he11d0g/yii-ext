@@ -5,4 +5,4 @@ yii-ext
 Список расширений:
 
 Модули:
-+ HdSlider - паралакс слайдер
++ [HDSlider](https://github.com/he11d0g/yii-ext/tree/master/protected/modules/hdslider) - паралакс слайдер
